@@ -31,8 +31,6 @@ jobs:
 
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: flutter --doctor
       - name: Resolve Dependecies
         run: flutter pub get
       - name: Run analyze
