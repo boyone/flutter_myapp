@@ -1,13 +1,5 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility that Flutter provides. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:my_app/main.dart';
 
 void main() {
@@ -26,5 +18,15 @@ void main() {
     // Verify that our counter has incremented.
     expect(find.text('0'), findsNothing);
     expect(find.text('1'), findsOneWidget);
+    await tester.tap(find.byIcon(Icons.add));
+
+    var nextButton = find.byKey(const Key('next'));
+    await tester.tap(nextButton);
+    await tester.pumpAndSettle();
+
+    var counter = find.byKey(const Key('counter'));
+    expect(counter, findsOneWidget);
+    var counterText = counter.evaluate().single.widget as Text;
+    expect(counterText.data, '2');
   });
 }
