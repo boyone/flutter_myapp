@@ -28,7 +28,9 @@ jobs:
         with:
           flutter-version: '2.10.2'
           channel: 'stable'
-
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
 
       # Runs a single command using the runners shell
       - name: Resolve Dependecies
